@@ -24,4 +24,25 @@ public class UserService {
 		return obj.get();
 	}
 	
+	public User insert(User obj) {
+		return repository.save(obj);
+	}
+	
+	public void delete(Long id) {
+		repository.deleteById(id);
+	}
+	
+	public User update(Long id, User obj) {
+		//Entidade monitora pelo JPA fica preparado para ser usado no banco de dados
+		User entity = repository.getOne(id);
+		updateData(entity, obj);
+		return repository.save(entity);
+	}
+
+	private void updateData(User entity, User obj) {
+		entity.setName(obj.getName());
+		entity.setEmail(obj.getEmail());
+		entity.setPhone(obj.getPhone());
+	}
 }
+
