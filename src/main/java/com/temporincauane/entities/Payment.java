@@ -1,3 +1,4 @@
+
 package com.temporincauane.entities;
 
 import java.io.Serializable;
